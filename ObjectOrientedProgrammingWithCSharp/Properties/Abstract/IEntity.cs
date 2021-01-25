@@ -6,7 +6,7 @@ namespace ObjectOrientedProgrammingWithCSharp.Interfaces
 {
    abstract class IEntity
    {
-       public string Name { get; set; }
+      public  string Name { get; set; }
        
 
 
