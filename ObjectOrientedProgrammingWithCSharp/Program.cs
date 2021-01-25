@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using ObjectOrientedProgrammingWithCSharp.Business.CheckCustomer;
+using ObjectOrientedProgrammingWithCSharp.DataAccess;
+using ObjectOrientedProgrammingWithCSharp.DataAccess.Concrete;
 using ObjectOrientedProgrammingWithCSharp.Interfaces;
 using ObjectOrientedProgrammingWithCSharp.Manager;
 using ObjectOrientedProgrammingWithCSharp.Properties;
@@ -11,78 +14,57 @@ namespace ObjectOrientedProgrammingWithCSharp
         // burada sınıflardan örnekler oluşturup kontrol ettim kısaca switc-case yapısına girmedim 
         static void Main(string[] args)
         {
-          Player player1 = new ChildPlayer
-          {
-              id =1,
-              name = "Emirhan",
-              soyad = "dogandemir",
-              tcNo = "11111111111",
-              birtdayYear =  2000,
-              Age = 15,
-              
-          };
-          Player player2 = new OldPlayer
-          {
-              id = 2,
-              name = "hasan",
-              soyad = "huseyin",
-              tcNo = "111111111",
-              birtdayYear = 1976,
-              yearsOfExperience = 23
-          };
-            PlayerManager playerManager= new PlayerManager();
-            playerManager.Add(player1);
-            playerManager.Add(player2);
-            playerManager.GetAllPlayer();
+           ILoggerService smsLoggerService = new SmsLoggerService();
+            ILoggerService databaseLoggerService = new DatabaseLoggerService();
+            ILoggerService fileLoggerService = new FileLoggerService();
+            IPlayerCheckService playerCheckService = new MernisService();
+            Player player1 = new Player { TcNo = "22222222222", Name = "Emirhan", Soyad = "dogandemir", DateOfBirth = new DateTime(2000, 1, 8), Id = 1 };
+            Player player2 = new Player { TcNo = "33333333333", Name = "Hasan", Soyad = "Huseyin", DateOfBirth = new DateTime(2001, 1, 8), Id = 2 };
+            Player player3 = new Player { TcNo = "44444444444", Name = "Murat", Soyad = "Hoca", DateOfBirth = new DateTime(1987, 6, 8), Id = 3 };
+            IPlayerService playerService = new PlayerManager(new List<Player> { player1, player2, player3 },
+                new List<ILoggerService> { smsLoggerService, databaseLoggerService },
+                new List<IPlayerCheckService> { playerCheckService }
+            );
+            playerService.Add(player1);
+            playerService.Add(player2);
+            playerService.Add(player3);
 
-            Game game1 = new Game
+            IEntity erzurum = new Game
             {
-                id = 1,
-                name = "Erzurum",
-                gameType = "Macera",
-                price = 500,
-
+                Id = 1,
+                Price = 250,
+                Name = "erzurum",
+                GameType = "Macera ",
+                StockAmount = 100
             };
-            Game game2 = new Game
+            IEntity fallGuys = new Game
             {
-                id = 2,
-                name = "PUBG",
-                gameType = "Macera",
-                price = 600,
-
+                Id = 2,
+                Price = 300,
+                Name = "fallguys  ",
+                GameType = "Eglence",
+                StockAmount = 50
             };
-            GameManager game = new GameManager();
-            game.Add(game1);
-            game.Add(game2);
-            game.GetGames();
+            IGameService gameManager = new GameManager(new List<ILoggerService> { fileLoggerService });
+            gameManager.Add(erzurum);
+            gameManager.Add(fallGuys);
 
-            Campaign campaign1 = new Campaign
-            {
-                id = 1,
-                name = "İndirimleri",
-                discountedPrice = 100
-
-            };
-
-            ISaleManager saleManager= new GameSaleManager();
-            saleManager.Sale(player1);// parametre olarak oyuncu verildi satıs işlemi tanımlandı
-
-
-            Campaign campaign2 = new Year_EndCampaign
-            {
-                id = 1,
-                name = "İndirimleri",
-                discountedPrice = 100,
-                days = new List<string>
-                {
-                    "pazartesi",
-                    "sali",
-                    "carsamba"
-                }
-                
-            };
-
-
+            IEntity campaign1= new Campaign{Id = 1,DiscountedPrice = 20,Name = "haftasonu indirimi"};
+            IEntity campaign2 = new Campaign { Id = 1, DiscountedPrice = 100, Name = "yaz indirimi" };
+            IEntity campaign3 = new Campaign { Id = 1, DiscountedPrice = 25, Name = "kıs indirimi" };
+            ICampaignService campaignService= new CampaignManager(new List<ILoggerService>{databaseLoggerService});
+            campaignService.Add(campaign1);
+            campaignService.Add(campaign2);
+            campaignService.Add(campaign3);
+          
+            ISaleService saleService= new GameSaleManager(erzurum);
+            ISaleService saleService2 = new GameSaleManager(fallGuys);
+            List<ISaleService> saleServices = new List<ISaleService> {saleService2, saleService};
+            foreach (var sales in saleServices)
+            { 
+                sales.Sale(erzurum);
+            }
+            ;
         }
     }
 }

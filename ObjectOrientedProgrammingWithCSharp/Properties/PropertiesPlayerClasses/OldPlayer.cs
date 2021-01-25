@@ -6,7 +6,7 @@ namespace ObjectOrientedProgrammingWithCSharp
 {
     class OldPlayer: Player
     {
-        public int yearsOfExperience { get; set; } // yaşı ilerlemiş oyuncular için tecrübe yılı propertysi ekledim
+        public int YearsOfExperience { get; set; } // yaşı ilerlemiş oyuncular için tecrübe yılı propertysi ekledim
 
     }
 }
