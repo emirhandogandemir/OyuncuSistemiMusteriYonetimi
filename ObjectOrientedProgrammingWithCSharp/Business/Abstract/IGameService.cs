@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ObjectOrientedProgrammingWithCSharp.Interfaces;
+using ObjectOrientedProgrammingWithCSharp.Properties;
 
 namespace ObjectOrientedProgrammingWithCSharp
 {

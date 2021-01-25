@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ObjectOrientedProgrammingWithCSharp.DataAccess;
+using ObjectOrientedProgrammingWithCSharp.Properties;
 
 namespace ObjectOrientedProgrammingWithCSharp
 {

@@ -56,10 +56,10 @@ namespace ObjectOrientedProgrammingWithCSharp
             campaignService.Add(campaign2);
             campaignService.Add(campaign3);
           
-            ISaleService saleService= new GameSaleManager();
-            ISaleService saleService2 = new GameSaleManager();
+            ISaleService saleService= new GameSaleManager(player1);
+            ISaleService saleService2 = new GameSaleManager(player2);
             saleService.Sale(erzurum);
-            saleService2.Sale(fallGuys, campaign1);
+            saleService2.Sale(fallGuys,campaign2);
           
             ;
         }

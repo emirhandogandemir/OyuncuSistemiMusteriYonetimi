@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using ObjectOrientedProgrammingWithCSharp.Business.CheckCustomer;
 using ObjectOrientedProgrammingWithCSharp.DataAccess;
+using ObjectOrientedProgrammingWithCSharp.Properties;
 
 namespace ObjectOrientedProgrammingWithCSharp
 {
