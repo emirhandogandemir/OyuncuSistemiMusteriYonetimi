@@ -4,9 +4,10 @@ using System.Text;
 
 namespace ObjectOrientedProgrammingWithCSharp.Interfaces
 {
-    interface IEntity
-    {
-         string Name { get; set; }
+   abstract class IEntity
+   {
+       public string Name { get; set; }
+       
 
 
     }

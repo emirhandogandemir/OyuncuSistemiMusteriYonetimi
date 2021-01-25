@@ -7,6 +7,8 @@ namespace ObjectOrientedProgrammingWithCSharp.DataAccess.Concrete
 {
     class SmsLoggerService : ILoggerService
     {
+        
+
         public void Add(IEntity entity)
         {
             Console.WriteLine("Saved to SMS  :" + entity.Name);

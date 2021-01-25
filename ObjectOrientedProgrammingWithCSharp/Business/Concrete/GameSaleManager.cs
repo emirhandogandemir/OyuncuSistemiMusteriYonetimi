@@ -17,7 +17,7 @@ namespace ObjectOrientedProgrammingWithCSharp.Manager
 
         public void Sale(IEntity game,IEntity campaign)
         {
-            Console.WriteLine(_player.Name +" kişisine "+game.Name+" oyunu satılırken  "+ campaign.Name +" adlı indirim gerceklestirildi ");
+            Console.WriteLine(_player.Name +" kişisine "+game.Name+" oyunu satılırken  "+ campaign.Name +" adlı indirim gerceklestirildi " );
         }
 
         public void Sale(IEntity game)
