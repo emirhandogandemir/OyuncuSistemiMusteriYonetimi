@@ -31,13 +31,7 @@ namespace ObjectOrientedProgrammingWithCSharp
             }
         }
 
-        public void GetAll()
-        {
-            foreach (var logger in _loggerServices)
-            {
-                Console.WriteLine("Su anki kampanyalar : "+logger);
-            }
-        }
+      
 
         public void Update(IEntity Campaign)
         {

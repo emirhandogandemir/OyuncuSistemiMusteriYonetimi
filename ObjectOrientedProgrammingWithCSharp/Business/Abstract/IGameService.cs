@@ -13,6 +13,6 @@ namespace ObjectOrientedProgrammingWithCSharp
 
         void Update(IEntity entity);
 
-        void GetGames();
+       
     }
 }

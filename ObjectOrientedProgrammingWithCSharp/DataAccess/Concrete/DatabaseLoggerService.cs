@@ -10,17 +10,17 @@ namespace ObjectOrientedProgrammingWithCSharp.DataAccess.Concrete
     {
         public void Add(IEntity entity)
         {
-            Console.WriteLine("Saved to db"+entity.Name);
+            Console.WriteLine("Saved to db  : "+entity.Name);
         }
 
         public void Delete(IEntity entity)
         {
-            Console.WriteLine("Delete to db" + entity.Name);
+            Console.WriteLine("Delete to db  : " + entity.Name);
         }
 
         public void Update(IEntity entity)
         {
-            Console.WriteLine("Update to db" + entity.Name);
+            Console.WriteLine("Update to db  : " + entity.Name);
         }
     }
 }

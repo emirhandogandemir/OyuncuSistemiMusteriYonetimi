@@ -12,7 +12,7 @@ namespace ObjectOrientedProgrammingWithCSharp
         void Update(IEntity entity);
         void Delete(IEntity entity);
 
-        void GetAll();
+       
 
     }
 }

@@ -6,7 +6,7 @@ namespace ObjectOrientedProgrammingWithCSharp.Business.CheckCustomer
 {
     interface IPlayerCheckService
     {
-        bool CheckIfRealPerson(Player player);
+        bool CheckIfRealPlayer(Player player);
 
 
     }

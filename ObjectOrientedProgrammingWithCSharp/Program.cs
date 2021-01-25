@@ -21,8 +21,7 @@ namespace ObjectOrientedProgrammingWithCSharp
             Player player1 = new Player { TcNo = "22222222222", Name = "Emirhan", Soyad = "dogandemir", DateOfBirth = new DateTime(2000, 1, 8), Id = 1 };
             Player player2 = new Player { TcNo = "33333333333", Name = "Hasan", Soyad = "Huseyin", DateOfBirth = new DateTime(2001, 1, 8), Id = 2 };
             Player player3 = new Player { TcNo = "44444444444", Name = "Murat", Soyad = "Hoca", DateOfBirth = new DateTime(1987, 6, 8), Id = 3 };
-            IPlayerService playerService = new PlayerManager(new List<Player> { player1, player2, player3 },
-                new List<ILoggerService> { smsLoggerService, databaseLoggerService },
+            IPlayerService playerService = new PlayerManager(new List<ILoggerService> { smsLoggerService, databaseLoggerService },
                 new List<IPlayerCheckService> { playerCheckService }
             );
             playerService.Add(player1);
@@ -57,13 +56,11 @@ namespace ObjectOrientedProgrammingWithCSharp
             campaignService.Add(campaign2);
             campaignService.Add(campaign3);
           
-            ISaleService saleService= new GameSaleManager(erzurum);
-            ISaleService saleService2 = new GameSaleManager(fallGuys);
-            List<ISaleService> saleServices = new List<ISaleService> {saleService2, saleService};
-            foreach (var sales in saleServices)
-            { 
-                sales.Sale(erzurum);
-            }
+            ISaleService saleService= new GameSaleManager();
+            ISaleService saleService2 = new GameSaleManager();
+            saleService.Sale(erzurum);
+            saleService2.Sale(fallGuys, campaign1);
+          
             ;
         }
     }

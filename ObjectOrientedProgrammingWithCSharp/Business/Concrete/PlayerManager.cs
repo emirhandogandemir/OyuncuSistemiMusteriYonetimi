@@ -10,12 +10,12 @@ namespace ObjectOrientedProgrammingWithCSharp
 {
     class PlayerManager : IPlayerService
     {
-        private List<Player> _player;
+      
         private List<ILoggerService> _loggerServices;
         private List<IPlayerCheckService> _playerCheckServices;
-        public PlayerManager(List<Player> player, List<ILoggerService> loggerServices, List<IPlayerCheckService> playerCheckServices)
+        public PlayerManager( List<ILoggerService> loggerServices, List<IPlayerCheckService> playerCheckServices)
         {
-            _player = player;
+            
             _loggerServices = loggerServices;
             _playerCheckServices = playerCheckServices;
         }
@@ -26,9 +26,15 @@ namespace ObjectOrientedProgrammingWithCSharp
             {
                 foreach (var playerCheck in _playerCheckServices)
                 {
-                    if (playerCheck.CheckIfRealPerson((Player) player))
+                    if (playerCheck.CheckIfRealPlayer((Player) player))
                     {
-                        _player.Add((Player)player);
+                       
+
+                        foreach (var logger in _loggerServices)// degisiklik burada yapıldı
+                        {
+                            logger.Add(player);
+                        }
+
                     }
                     else
                     {
@@ -38,10 +44,6 @@ namespace ObjectOrientedProgrammingWithCSharp
                 }
 
 
-                foreach (var logger in _loggerServices)
-                {
-                    logger.Add(player);
-                }
 
             }
             catch (Exception exception)
@@ -61,13 +63,6 @@ namespace ObjectOrientedProgrammingWithCSharp
             }
         }
 
-        public void GetAllPlayer()
-        {
-            foreach (var logger in _loggerServices)
-            {
-                Console.WriteLine(" KAYITLI OYUNCULAR : "+logger);
-            }
-        }
 
         public void Update(IEntity player)
         {

@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
+using System.Transactions;
 using ObjectOrientedProgrammingWithCSharp.Interfaces;
 
 namespace ObjectOrientedProgrammingWithCSharp.Manager
 {
     class GameSaleManager : ISaleService
     {
-        private IEntity _entity;
-
-        public GameSaleManager(IEntity entity)
+        
+        public void Sale(IEntity game,IEntity campaign)
         {
-            _entity = entity;
+            Console.WriteLine(game.Name+" oyunu satılırken  "+ campaign.Name +" adlı indirim gerceklestirildi " +" toplam indirim miktarı : ");
         }
 
-        public void Sale(IEntity entity)
+        public void Sale(IEntity game)
         {
-            Console.WriteLine(_entity.Name + "oyunu satısı gerceklestirildi");
+            Console.WriteLine(game.Name + " oyunu satıldı bu oyunda indirimimiz mevcut degil ");
         }
     }
 }

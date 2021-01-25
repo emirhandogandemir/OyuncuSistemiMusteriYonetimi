@@ -31,13 +31,7 @@ namespace ObjectOrientedProgrammingWithCSharp
             }
         }
 
-        public void GetGames()
-        {
-            foreach (var logger in _loggerServices)
-            {
-                Console.WriteLine("Kayıtlı oyunlar : " + logger);
-            }
-        }
+      
 
         public void Update(IEntity game)
         {
