@@ -10,4 +10,4 @@ Gereksinimler
     
     
     
-    
+    ![Konsol Çıktısı](C:\Users\Emirhan Doğandemir\Desktop)
