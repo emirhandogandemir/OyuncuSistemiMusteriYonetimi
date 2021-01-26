@@ -10,4 +10,4 @@ Gereksinimler
     
     
     
-    ![Konsol Çıktısı](C:\Users\Emirhan Doğandemir\Desktop)
+    ![Konsol Çıktısı](https://user-images.githubusercontent.com/74687192/105753800-4f79a680-5f5a-11eb-8411-97134f9ef212.PNG)
